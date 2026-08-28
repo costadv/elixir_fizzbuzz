@@ -1,6 +1,7 @@
 # FizzBuzz
 
-**TODO: Add description**
+FizzBuzz Exercise
+reads a list from a text file and for each number multiple of 3 or 5, replace the number with fizz or buzz respectively. If the number is multiple of 3 and 5, the number is replaced for fizzbuzz.
 
 ## Installation
 
