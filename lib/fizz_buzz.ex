@@ -14,6 +14,7 @@ defmodule FizzBuzz do
   def handleFileRead({:ok, fileContent}) do
     fileContent
     |> String.split(",")
+    |> Enum.map(fn x -> String.trim(x) end)
     |> Enum.map(fn x -> String.to_integer(x) end)
     |> IO.inspect()
   end
