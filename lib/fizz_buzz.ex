@@ -11,12 +11,13 @@ defmodule FizzBuzz do
   end
 
   def handleFileRead({:error, reason}), do: "File not found. Reason: #{reason}"
-  def handleFileRead({:ok, fileContent}), do: fileContent
+  def handleFileRead({:ok, fileContent}) do
+    fileContent
+    |> String.split(",")
+    |> Enum.map(fn x -> String.to_integer(x) end)
+    |> IO.inspect()
+  end
 
 end
 
 FizzBuzz.build("numbers.txt")
-|> String.split(",")
-|> Enum.map(fn x -> String.trim(x) end)
-|> Enum.map(fn x -> String.to_integer(x) end)
-|> IO.inspect()
