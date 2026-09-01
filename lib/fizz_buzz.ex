@@ -22,9 +22,9 @@ defmodule FizzBuzz do
 
   def fizzBuzz(number) do
     cond do
-      Integer.mod(number, 3) + Integer.mod(number, 5) == 0 -> "FizzBuzz"
-      Integer.mod(number, 3) == 0 -> "Fizz"
-      Integer.mod(number, 5) == 0 -> "Buzz"
+      Integer.mod(number, 3) + Integer.mod(number, 5) == 0 -> :FizzBuzz
+      Integer.mod(number, 3) == 0 -> :Fizz
+      Integer.mod(number, 5) == 0 -> :Buzz
       true -> number
     end
 
