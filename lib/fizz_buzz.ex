@@ -10,10 +10,15 @@ defmodule FizzBuzz do
   def handleFileRead({:ok, fileContent}, _) do
     fileContent
     |> String.split(",")
-    |> Enum.map(&String.trim/1)
-    |> Enum.map(&String.to_integer/1)
     |> IO.inspect()
-    |> Enum.map(&evaluateNumber/1)
+    |> Enum.map(&convertElement/1)
+  end
+
+  def convertElement(element) do
+    element
+    |> String.trim()
+    |> String.to_integer()
+    |> evaluateNumber()
   end
 
   def evaluateNumber(number) when rem(number, 3) == 0 and rem(number, 5) == 0, do: :fizzbuzz
