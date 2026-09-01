@@ -17,6 +17,7 @@ defmodule FizzBuzz do
     |> Enum.map(&String.trim/1)
     |> Enum.map(&String.to_integer/1)
     |> IO.inspect()
+    |> Enum.map(fizzbuzz())
   end
 
   def fizzBuzz(number) do
