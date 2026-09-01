@@ -6,25 +6,27 @@ defmodule FizzBuzz do
 
   end
 
-  def handleFileRead({:error, reason}, fileName), do: "File #{fileName} not found. Reason: #{reason}"
-  def handleFileRead({:ok, fileContent}, _) do
-    fileContent
+  defp handleFileRead({:error, reason}, fileName), do: {:error, "File #{fileName} not found. Reason: #{reason}"}
+  defp handleFileRead({:ok, fileContent}, _) do
+    result = fileContent
     |> String.split(",")
     |> IO.inspect()
     |> Enum.map(&convertElement/1)
+
+    {:ok, result}
   end
 
-  def convertElement(element) do
+  defp convertElement(element) do
     element
     |> String.trim()
     |> String.to_integer()
     |> evaluateNumber()
   end
 
-  def evaluateNumber(number) when rem(number, 3) == 0 and rem(number, 5) == 0, do: :fizzbuzz
-  def evaluateNumber(number) when rem(number, 3) == 0, do: :fizz
-  def evaluateNumber(number) when rem(number, 5) == 0, do: :buzz
-  def evaluateNumber(number), do: number
+  defp evaluateNumber(number) when rem(number, 3) == 0 and rem(number, 5) == 0, do: :fizzbuzz
+  defp evaluateNumber(number) when rem(number, 3) == 0, do: :fizz
+  defp evaluateNumber(number) when rem(number, 5) == 0, do: :buzz
+  defp evaluateNumber(number), do: number
 
   #def fizzBuzz(number) do
   #  cond do
