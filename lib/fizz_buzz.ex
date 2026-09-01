@@ -2,15 +2,14 @@ defmodule FizzBuzz do
   def build(fileName) do
 
     File.read(fileName)
-    |> handleFileRead(fileName)
+    |> handleFileRead()
 
   end
 
-  defp handleFileRead({:error, reason}, fileName), do: {:error, "File #{fileName} not found. Reason: #{reason}"}
-  defp handleFileRead({:ok, fileContent}, _) do
+  defp handleFileRead({:error, reason}), do: {:error, "File not found. Reason: #{reason}"}
+  defp handleFileRead({:ok, fileContent}) do
     result = fileContent
     |> String.split(",")
-    |> IO.inspect()
     |> Enum.map(&convertElement/1)
 
     {:ok, result}
