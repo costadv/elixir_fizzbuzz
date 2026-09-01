@@ -1,16 +1,16 @@
 defmodule FizzBuzz do
   def build(fileName) do
-
     File.read(fileName)
     |> handleFileRead()
-
   end
 
   defp handleFileRead({:error, reason}), do: {:error, "File not found. Reason: #{reason}"}
+
   defp handleFileRead({:ok, fileContent}) do
-    result = fileContent
-    |> String.split(",")
-    |> Enum.map(&convertElement/1)
+    result =
+      fileContent
+      |> String.split(",")
+      |> Enum.map(&convertElement/1)
 
     {:ok, result}
   end
@@ -27,7 +27,7 @@ defmodule FizzBuzz do
   defp evaluateNumber(number) when rem(number, 5) == 0, do: :buzz
   defp evaluateNumber(number), do: number
 
-  #def fizzBuzz(number) do
+  # def fizzBuzz(number) do
   #  cond do
   #    Integer.mod(number, 3) + Integer.mod(number, 5) == 0 -> :fizzBuzz
   #    Integer.mod(number, 3) == 0 -> :fizz
@@ -35,9 +35,8 @@ defmodule FizzBuzz do
   #    true -> number
   #  end
   #
-  #end
-
+  # end
 end
 
-#FizzBuzz.build("numbers.txt")
-#|> IO.inspect()
+# FizzBuzz.build("numbers.txt")
+# |> IO.inspect()
